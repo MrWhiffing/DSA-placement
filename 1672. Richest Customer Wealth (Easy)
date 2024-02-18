@@ -1,0 +1,21 @@
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        int sum1 = 0;
+        int[] customer1 = new int[accounts.length];  
+        for(int i=0; i<accounts.length; i++){
+            for(int j=0; j<accounts[i].length; j++){
+                sum1 = sum1 + accounts[i][j];
+                
+            }
+            customer1[i] = sum1;
+            sum1=0;
+        }
+        int max = customer1[0];  
+        for(int i=0; i<customer1.length; i++){
+            if(customer1[i] > max){
+                max = customer1[i];
+            }
+        }
+        return max;
+    }
+}
