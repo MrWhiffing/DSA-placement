@@ -1,0 +1,39 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int[][] ans = new int[n][n];
+        int[] arr = new int[(n*n)];
+        int left = 0, top = 0, right = n-1, bottom = n-1;
+        int m = 0;
+
+        for(int a=0; a<(n*n); a++){
+            arr[a] = a+1;
+        }
+        while(left<=right && top<=bottom){
+            if(top<=bottom){
+                for(int i=left; i<=right; i++){
+                    ans[top][i] = arr[m++];
+                }
+                top++;
+            }
+            if(left<=right){
+                for(int j=top; j<=bottom; j++){
+                    ans[j][right] = arr[m++];
+                }
+                right--;
+            }
+            if(top<=bottom){
+                for(int k=right; k>=left; k--){
+                    ans[bottom][k] = arr[m++];
+                }
+                bottom--;
+            }
+            if(left<=right){
+                for(int l=bottom; l>=top; l--){
+                    ans[l][left] = arr[m++];
+                }
+                left++;
+            }
+        }
+        return ans;
+    }
+}
