@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+
+class Solution {
+    public int rob(int[] nums) {
+        if(nums.length < 2){
+            return nums[0];
+        }
+        int[] sum = new int[nums.length];
+        sum[0] = nums[0];
+        sum[1] = Math.max(nums[0],nums[1]);
+        for(int n=2; n<nums.length; n++){
+            sum[n] = Math.max(sum[n-2]+nums[n],sum[n-1]);
+        }
+        return sum[nums.length-1]; 
+    }
+}
