@@ -1,0 +1,18 @@
+class Solution {
+    public int arrangeCoins(int n) {
+        int first = 0, last = n;
+        while(first<=last){
+            int mid = first + (last-first)/2;
+            if((long)mid * (mid + 1) / 2 == n){
+                return mid;
+            }
+            else if((long)mid * (mid + 1) / 2 < n){
+                first = mid + 1;
+            }
+            else{
+                last = mid - 1;
+            }
+        }
+        return last;
+    }
+}
